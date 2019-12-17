@@ -30,6 +30,13 @@ import org.springframework.beans.BeansException;
  * or the like will implement postProcessBeforeInitialization, and post-processors
  * that wrap beans with proxies will normally implement postProcessAfterInitialization.
  *
+ * <p>允许对新的bean实例进行自定义修改，例如：
+ * 检查标识接口或者用代理包装它们
+ * <p>ApplicationContext会在Bean定义中自动检查BeanPostProcessor Bean，并且在其他bean创建之前应用它们
+ * 普通的bean工厂允许以编程的方式注册后处理器
+ * <p>通常，通过标识接口或类似接口填充bean的后处理器将会实现postProcessBeforeInitialization，
+ * 通过代理包装bean的后处理器会实现postProcessAfterInitialization
+ *
  * @author Juergen Hoeller
  * @since 10.10.2003
  * @see ConfigurableBeanFactory#addBeanPostProcessor

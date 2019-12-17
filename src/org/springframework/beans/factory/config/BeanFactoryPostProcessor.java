@@ -31,6 +31,10 @@ import org.springframework.beans.BeansException;
  * <p>See PropertyResourceConfigurer and its concrete implementations
  * for out-of-the-box solutions that address such configuration needs.
  *
+ * 允许自定义修改BeanDefinition，改写底层beanFactory的Bean的属性值
+ * <p>ApplicationContext会自动检测其bean定义中的BeanFactoryPostProcessor类型的bean，
+ * 并在其他bean创建之前应用它们
+ *
  * @author Juergen Hoeller
  * @since 06.07.2003
  * @see BeanPostProcessor

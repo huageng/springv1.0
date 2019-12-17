@@ -223,11 +223,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		this.startupTime = System.currentTimeMillis();
 
 		// tell subclass to refresh the internal bean factory
+		/*
+		* 此处应用了模板方法，以下两个方法都是有子类实现的
+		*/
 		refreshBeanFactory();
 		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
 		// configure the bean factory with context semantics
 		beanFactory.registerCustomEditor(Resource.class, new ContextResourceEditor(this));
+		/**
+		 * ApplicationContextAwareProcessor用于处理实现了ApplicationContextAware接口的bean,将容器对象注入该 bean
+		 */
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 		beanFactory.ignoreDependencyType(ResourceLoader.class);
 		beanFactory.ignoreDependencyType(ApplicationContext.class);

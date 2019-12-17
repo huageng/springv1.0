@@ -298,11 +298,11 @@ public class DefaultXmlBeanDefinitionParser implements XmlBeanDefinitionParser {
 		}
 		catch (ClassNotFoundException ex) {
 			throw new BeanDefinitionStoreException(this.resource, beanName,
-																						 "Bean class [" + className + "] not found", ex);
+					"Bean class [" + className + "] not found", ex);
 		}
 		catch (NoClassDefFoundError err) {
 			throw new BeanDefinitionStoreException(this.resource, beanName,
-																						 "Class that bean class [" + className + "] depends on not found", err);
+					"Class that bean class [" + className + "] depends on not found", err);
 		}
 	}
 
